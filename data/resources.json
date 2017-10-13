@@ -21,11 +21,6 @@
       "title": "About",
       "links": [
         {
-          "name": "GDG Lviv",
-          "url": "http://lviv.gdg.org.ua/",
-          "newTab": true
-        },
-        {
           "name": "Google Developers Group",
           "url": "https://developers.google.com/",
           "newTab": true
