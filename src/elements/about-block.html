@@ -26,6 +26,7 @@
 
             .statistics-row:first-of-type {
                 margin-bottom: 16px;
+                justify-content: center;
             }
 
             .statistics-row:last-of-type {
@@ -55,7 +56,7 @@
             }
 
             .numbers {
-                margin-left: 16px;
+                margin: 15px 0px 0px 40px;
                 font-size: 32px;
                 vertical-align: middle;
             }
@@ -126,7 +127,7 @@
                 }
 
                  .numbers {
-                    font-size: 50px;
+                    font-size: 150px;
                 }
             }
 
@@ -173,13 +174,13 @@
                                    horizontal
                                    justified>
 
-                    <div class="count-info attendees-count" layout horizontal>
+                    <!-- <div class="count-info attendees-count" layout horizontal>
                         <span class="icon" layout vertical center>
                             <iron-icon class="big-icon" icon="hoverboard:people"></iron-icon>
                             <span class="icon-label">{$ aboutBlock.statisticsBlock.attendees.label $}</span>
                         </span>
                         <span class="numbers">{$ aboutBlock.statisticsBlock.attendees.number $}</span>
-                    </div>
+                    </div> -->
 
                     <div class="count-info days-count" layout horizontal>
                         <span class="icon" layout vertical center>
@@ -190,7 +191,7 @@
                     </div>
                 </div>
 
-                <div class="statistics-row" flex
+                <!-- <div class="statistics-row" flex
                                    layout
                                    horizontal
                                    justified>
@@ -209,7 +210,7 @@
                         </span>
                         <span class="numbers">{$ aboutBlock.statisticsBlock.tracks.number $}</span>
                     </div>
-                </div>
+                </div> -->
 
             </div>
 
