@@ -10,12 +10,12 @@
   "environment": "dev",
   "prefix": "/",
   "firebase": {
-    "apiKey": "AIzaSyALDa2D7CMhK_wt2VkET1MaJuQXYVUJd2I",
-    "authDomain": "hoverboard-experimental.firebaseapp.com",
-    "databaseURL": "https://hoverboard-experimental.firebaseio.com",
-    "projectId": "hoverboard-experimental",
-    "storageBucket": "hoverboard-experimental.appspot.com",
-    "messagingSenderId": "1088172422905"
+    "apiKey": "AIzaSyBegSFsW1hXhqnu_HMHTupgf4PAN13BlAk",
+    "authDomain": "gdg-kolachi-website.firebaseapp.com",
+    "databaseURL": "https://gdg-kolachi-website.firebaseio.com",
+    "projectId": "gdg-kolachi-website",
+    "storageBucket": "gdg-kolachi-website.appspot.com",
+    "messagingSenderId": "375970714404"
   },
   "googleMapApiKey": "AIzaSyDWy6O98n-ueoVaYPWRPve23vjm3JP08gw",
   "organizer": {
@@ -104,7 +104,7 @@
     }
   },
   "location": {
-    "short": "Lviv, Ukraine",
+    "short": "Karachi, Pakistan",
     "address": "36 Shchyretska St, Lviv, Ukraine",
     "pointer": {
       "latitude": 49.809841,
