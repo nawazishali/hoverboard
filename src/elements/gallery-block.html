@@ -11,8 +11,7 @@
     <style is="custom-style" include="shared-styles flex flex-alignment"></style>
 
     <style>
-
-      :host {
+       :host {
         display: block;
       }
 
@@ -101,7 +100,7 @@
         }
 
         .grid-item:nth-child(5) {
-          grid-area: 2 / 2 / 2 / 2;
+          grid-area: 2 / 2 / 2 / 5;
         }
 
         .grid-item:nth-child(6) {
@@ -124,19 +123,13 @@
           grid-area: 2 / 3 / 2 / 5;
         }
       }
-
     </style>
 
     <div class="photos-grid">
       <template is="dom-repeat" items="[[gallery]]" as="photo">
-        <plastic-image
-          class="grid-item"
-          srcset="[[photo]]"
-          sizing="cover"
-          lazy-load preload fade
-        ></plastic-image>
+        <plastic-image class="grid-item" srcset="[[photo]]" sizing="cover" lazy-load preload fade></plastic-image>
       </template>
-      <div class="gallery-info" layout vertical justified>
+      <!-- <div class="gallery-info" layout vertical justified>
         <div>
           <h2>{$ galleryBlock.title $}</h2>
           <p>{$ galleryBlock.description $}</p>
@@ -144,13 +137,12 @@
         <a href="{$ galleryBlock.callToAction.url $}" target="_blank" rel="noopener noreferrer">
           <paper-button>{$ galleryBlock.callToAction.label $}</paper-button>
         </a>
-      </div>
+      </div> -->
     </div>
 
   </template>
 
   <script>
-
     class GalleryBlock extends ReduxMixin(Polymer.Element) {
       static get is() {
         return 'gallery-block';

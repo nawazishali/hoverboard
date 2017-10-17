@@ -21,11 +21,6 @@
       "title": "About",
       "links": [
         {
-          "name": "GDG Lviv",
-          "url": "http://lviv.gdg.org.ua/",
-          "newTab": true
-        },
-        {
           "name": "Google Developers Group",
           "url": "https://developers.google.com/",
           "newTab": true
@@ -38,7 +33,7 @@
       ]
     },
     {
-      "title": "Explore Past DevFests",
+      "title": "Explore Past Events",
       "links": [
         {
           "name": "DFUA 2013",
@@ -63,7 +58,7 @@
       ]
     },
     {
-      "title": "Event Resources",
+      "title": "Our Resources",
       "links": [
         {
           "name": "Partnership Proposition",

@@ -13,8 +13,7 @@
     <style is="custom-style" include="shared-styles flex flex-alignment"></style>
 
     <style>
-
-      :host {
+       :host {
         display: block;
       }
 
@@ -52,35 +51,10 @@
           grid-template-columns: repeat(5, 1fr);
         }
       }
-
     </style>
 
     <div class="container">
       <h1 class="container-title">{$ partnersBlock.title $}</h1>
-
-      <template is="dom-repeat" items="[[partners]]" as="block">
-          <h4 class="block-title">[[block.title]]</h4>
-          <div class="logos-wrapper">
-            <template is="dom-repeat" items="[[block.logos]]" as="logo">
-              <a
-                class="logo-item card"
-                href$="[[logo.url]]"
-                title$="[[logo.name]]"
-                target="_blank"
-                rel="noopener noreferrer"
-                layout horizontal center-center
-              >
-                <plastic-image
-                  class="logo-img"
-                  srcset="[[logo.logoUrl]]"
-                  sizing="contain"
-                  lazy-load
-                  preload fade
-                ></plastic-image>
-              </a>
-            </template>
-          </div>
-      </template>
 
       <a href="{$ partnershipProposition $}" target="_blank" rel="noopener noreferrer">
         <paper-button class="cta-button animated icon-right">
@@ -88,12 +62,24 @@
           <iron-icon icon="hoverboard:arrow-right-circle"></iron-icon>
         </paper-button>
       </a>
+
+      <template is="dom-repeat" items="[[partners]]" as="block">
+        <h4 class="block-title">[[block.title]]</h4>
+        <div class="logos-wrapper">
+          <template is="dom-repeat" items="[[block.logos]]" as="logo">
+            <a class="logo-item card" href$="[[logo.url]]" title$="[[logo.name]]" target="_blank" rel="noopener noreferrer" layout horizontal
+              center-center>
+              <plastic-image class="logo-img" srcset="[[logo.logoUrl]]" sizing="contain" lazy-load preload fade></plastic-image>
+            </a>
+          </template>
+        </div>
+      </template>
+
     </div>
 
   </template>
 
   <script>
-
     class PartnersBlock extends ReduxMixin(Polymer.Element) {
       static get is() {
         return 'partners-block'
