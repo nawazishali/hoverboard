@@ -1,0 +1,92 @@
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+
+<link rel="import" href="../../bower_components/app-route/app-route.html">
+<link rel="import" href="../../bower_components/iron-pages/iron-pages.html">
+<link rel="import" href="../../bower_components/polymer/lib/elements/dom-repeat.html">
+
+<link rel="import" href="../mixins/utils-functions.html">
+<link rel="import" href="../mixins/redux-mixin.html">
+<link rel="import" href="../elements/shared-styles.html">
+<link rel="import" href="../elements/event-card.html">
+
+<dom-module id="events-page">
+  <template>
+    <style is="custom-style" include="shared-styles flex flex-alignment"></style>
+
+    <style>
+       :host {
+        display: block;
+      }
+
+      .flex {
+          display: flex;
+          flex-direction: row;
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+
+        event-card{
+          width: 500px;
+          margin: 20px;
+        }
+
+      @media (max-width: 640px) {
+        .container {
+          padding: 0 0 32px;
+        }
+      }
+
+      @media (min-width: 640px) {
+         :host {
+          background-color: #fff;
+        }
+      }
+    </style>
+
+    <div class="container flex">
+        <template is="dom-repeat" items="{{events}}" as="event">
+          <event-card event="[[event]]"></event-card>
+        </template>
+    </div>
+  </template>
+
+  <script>
+    class EventsPage extends Polymer.Element {
+      static get is() {
+        return 'events-page'
+      }
+
+      static get properties() {
+        return {
+          events: {
+            type: Object,
+          }
+        }
+      }
+
+      constructor(){
+        super();
+        this.fetchEvents();
+      }
+
+      fetchEvents(){
+        const result = new Promise(resolve => {
+          firebase.database()
+            .ref('/events')
+            .on('value', snapshot => {
+              resolve(snapshot.val());
+            })
+        });
+
+        result
+          .then(list => {
+            console.log(list);
+            this.events = list;
+          });
+      }
+      
+    }
+
+    window.customElements.define(EventsPage.is, EventsPage);
+  </script>
+</dom-module>
