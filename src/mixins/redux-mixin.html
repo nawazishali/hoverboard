@@ -53,6 +53,7 @@
       list: {},
       featured: {}
     },
+    events:[],
     schedule: {},
     gallery: [],
     team: [],
@@ -78,6 +79,7 @@
       blog: blogReducer(state.blog, action),
       speakers: speakersReducer(state.speakers, action),
       sessions: sessionsReducer(state.sessions, action),
+      events: eventsReducer(state.events, action),
       schedule: scheduleReducer(state.schedule, action),
       gallery: galleryReducer(state.gallery, action),
       team: teamReducer(state.team, action),

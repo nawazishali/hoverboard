@@ -42,9 +42,9 @@
       "title": "Blog"
     },
     {
-      "route": "schedule",
-      "permalink": "/schedule/",
-      "title": "Schedule"
+      "route": "events",
+      "permalink": "/events/",
+      "title": "Events"
     },
     {
       "route": "speakers",
@@ -78,6 +78,13 @@
       "description": "Hear from the Googlers, Partners, and Guest Speakers who are building the future of cloud. Check back often as we add more speakers, including our customers and partners.",
       "background": {
         "color": "#FFF"
+      },
+      "fontColor": "#424242"
+    },
+    "events": {
+      "title": "Events",
+      "background": {
+        "color": "#fff"
       },
       "fontColor": "#424242"
     },

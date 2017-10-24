@@ -245,6 +245,34 @@ const sessionsActions = {
   }
 };
 
+const eventsActions = {
+  fetchEvents: () => {
+    // const result = firebase.database()
+    //   .ref(`/events`)
+    //   .on('value', snapshot => {
+    //     console.log(snapshot.val());
+    //     store.dispatch({type: FETCH_EVENTS, list: snapshot.val()});
+    //   })
+
+    const result = new Promise(resolve => {
+      firebase.database()
+        .ref('/events')
+        .on('value', snapshot => {
+          resolve(snapshot.val());
+        })
+    });
+
+    result
+      .then(list => {
+        //console.log(list);
+        store.dispatch({
+          type: FETCH_EVENTS,
+          list
+        });
+      });
+  }
+}
+
 const scheduleActions = {
   fetchSchedule: () => {
     const state = store.getState();
