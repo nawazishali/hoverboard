@@ -12,6 +12,15 @@
 <link rel="import" href="../../bower_components/paper-styles/color.html">
 <link rel="import" href="../../bower_components/paper-styles/typography.html">
 
+
+<link rel="import" href="../../bower_components/paper-dialog/paper-dialog.html">
+<link rel="import" href="../../bower_components/paper-dialog-scrollable/paper-dialog-scrollable.html">
+<link rel="import" href="../../bower_components/paper-dialog-behavior/paper-dialog-behavior.html">
+<link rel="import" href="../../bower_components/neon-animation/web-animations.html">
+<link rel="import" href="../../bower_components/neon-animation/neon-animations.html">
+
+<link rel="import" href="../../bower_components/paper-tabs/paper-tabs.html">
+
 <link rel="import" href="./session-element.html">
 <link rel="import" href="./shared-styles.html">
 
@@ -152,10 +161,29 @@
         <div class="horizontal justified">
           <paper-button class="cafe-button"><a href="https://www.google.com" target="_blank">Register</a></paper-button>
           <span>|</span>
-          <paper-button class="cafe-button"><a href="https://www.google.com" target="_blank">Schedule</a></paper-button>
+          <paper-button class="cafe-button" data-name$="[[event.name]]" on-tap="openDialog">Schedule</paper-button>
         </div>
       </div>
     </paper-card>
+
+    <paper-dialog id="modal-[[event.name]]" entry-animation="scale-up-animation" exit-animation="fade-out-animation" with-backdrop>
+      <!-- <div class="header"> -->
+      <h2 style="text-align: center">Schedule</h2>
+      <!-- <paper-tabs selected="0" scrollable>
+          <paper-tab>The first tab</paper-tab>
+          <paper-tab>Tab two</paper-tab>
+          <paper-tab>The third tab</paper-tab>
+          <paper-tab>Fourth tab</paper-tab>
+        </paper-tabs> -->
+      <!-- </div> -->
+      <paper-dialog-scrollable>
+        <pre><code>[[toJson(event.schedule)]]</pre></code></pre>
+      </paper-dialog-scrollable>
+      <div class="buttons">
+        <paper-button dialog-dismiss>Cancel</paper-button>
+        <paper-button dialog-confirm autofocus>OK</paper-button>
+      </div>
+    </paper-dialog>
 
   </template>
 
@@ -189,7 +217,17 @@
         return desc.slice(maxChars, length);
       }
 
+      openDialog(e) {
+          let body = document.querySelector('body');
+          let modal = this.shadowRoot.querySelector('#modal-'+ e.target.getAttribute('data-name'));
+          let clonedModal = modal.cloneNode(true);
+          Polymer.dom(body).appendChild(clonedModal);
+          clonedModal.open();
+        }
 
+        toJson(data){
+          return JSON.stringify(data,null, 4);
+        }
     }
 
     window.customElements.define(EventCard.is, EventCard);

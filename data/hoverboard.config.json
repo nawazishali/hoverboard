@@ -1,6 +1,6 @@
 {
   "basepath": "/",
-  "url": "https://hoverboard-v2-dev.firebaseapp.com/",
+  "url": "https://gdgkolachi.com/",
   "startDate": "2017-10-013T09:00:00+03:00",
   "endDate": "2017-10-14T19:00:00+03:00",
   "analytics": {
@@ -19,10 +19,10 @@
   },
   "googleMapApiKey": "AIzaSyDWy6O98n-ueoVaYPWRPve23vjm3JP08gw",
   "organizer": {
-    "name": "GDG Lviv",
-    "twitter": "gdglviv",
-    "blog": "https://medium.com/gdg-lviv",
-    "url": "http://lviv.gdg.org.ua/"
+    "name": "GDG Kolachi",
+    "twitter": "gdgkolachi",
+    "blog": "https://medium.com/gdg-kolachi",
+    "url": "http://gdgkolachi.com"
   },
   "webapp": {
     "shortName": "DevFest",
