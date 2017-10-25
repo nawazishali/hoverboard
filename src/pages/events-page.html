@@ -3,6 +3,8 @@
 <link rel="import" href="../../bower_components/app-route/app-route.html">
 <link rel="import" href="../../bower_components/iron-pages/iron-pages.html">
 <link rel="import" href="../../bower_components/polymer/lib/elements/dom-repeat.html">
+<link rel="import" href="../elements/schedule-modal.html">
+
 
 
 
@@ -18,6 +20,7 @@
     <style>
        :host {
         display: block;
+        z-index: 110;
       }
 
       .flex {
@@ -53,9 +56,10 @@
     </style>
     <div class="container flex">
       <template is="dom-repeat" items="{{events}}" as="event">
-        <event-card event="[[event]]"></event-card>
+        <event-card event="[[event]]" schedule="{{schedule}}"></event-card>
       </template>
     </div>
+    <schedule-modal schedule="{{schedule}}"></schedule-modal>
   </template>
 
   <script>
@@ -68,7 +72,11 @@
       static get properties() {
         return {
           events: {
+            type: Object
+          },
+          schedule: {
             type: Object,
+            notify: true
           }
         }
       }
@@ -93,7 +101,6 @@
             this.events = list;
           });
       }
-
 
     }
 

@@ -20,7 +20,7 @@
   "googleMapApiKey": "AIzaSyDWy6O98n-ueoVaYPWRPve23vjm3JP08gw",
   "organizer": {
     "name": "GDG Kolachi",
-    "twitter": "gdgkolachi",
+    "twitter": "https://twitter.com/gdgkolachi",
     "blog": "https://medium.com/gdg-kolachi",
     "url": "http://gdgkolachi.com"
   },
@@ -111,8 +111,8 @@
     }
   },
   "location": {
-    "short": "Karachi, Pakistan",
-    "address": "36 Shchyretska St, Lviv, Ukraine",
+    "short": "NED University, Karachi",
+    "address": "Karachi",
     "pointer": {
       "latitude": 49.809841,
       "longitude": 23.972805,
@@ -144,11 +144,11 @@
     "follow": [
       {
         "name": "facebook",
-        "url": "https://www.facebook.com/devfest.ukraine/"
+        "url": "https://www.facebook.com/GDGKolachi/"
       },
       {
         "name": "twitter",
-        "url": "https://twitter.com/devfest_ukraine/"
+        "url": "https://twitter.com/gdgkolachi"
       }
     ],
     "share": [
