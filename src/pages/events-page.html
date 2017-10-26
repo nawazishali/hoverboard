@@ -3,6 +3,10 @@
 <link rel="import" href="../../bower_components/app-route/app-route.html">
 <link rel="import" href="../../bower_components/iron-pages/iron-pages.html">
 <link rel="import" href="../../bower_components/polymer/lib/elements/dom-repeat.html">
+<link rel="import" href="../elements/schedule-modal.html">
+
+
+
 
 <link rel="import" href="../mixins/utils-functions.html">
 <link rel="import" href="../mixins/redux-mixin.html">
@@ -16,19 +20,27 @@
     <style>
        :host {
         display: block;
+        z-index: 110;
       }
 
       .flex {
-          display: flex;
-          flex-direction: row;
-          flex-wrap: wrap;
-          justify-content: center;
-        }
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
 
-        event-card{
-          width: 500px;
-          margin: 20px;
-        }
+      event-card {
+        width: 500px;
+        margin: 20px;
+      }
+
+      paper-dialog>paper-tabs {
+        -webkit-font-smoothing: antialiased;
+        width: 100%;
+        text-transform: uppercase;
+        margin-bottom: 1px;
+      }
 
       @media (max-width: 640px) {
         .container {
@@ -42,12 +54,12 @@
         }
       }
     </style>
-
     <div class="container flex">
-        <template is="dom-repeat" items="{{events}}" as="event">
-          <event-card event="[[event]]"></event-card>
-        </template>
+      <template is="dom-repeat" items="{{events}}" as="event">
+        <event-card event="[[event]]" schedule="{{schedule}}"></event-card>
+      </template>
     </div>
+    <schedule-modal schedule="{{schedule}}"></schedule-modal>
   </template>
 
   <script>
@@ -56,20 +68,25 @@
         return 'events-page'
       }
 
+
       static get properties() {
         return {
           events: {
+            type: Object
+          },
+          schedule: {
             type: Object,
+            notify: true
           }
         }
       }
 
-      constructor(){
+      constructor() {
         super();
         this.fetchEvents();
       }
 
-      fetchEvents(){
+      fetchEvents() {
         const result = new Promise(resolve => {
           firebase.database()
             .ref('/events')
@@ -80,11 +97,11 @@
 
         result
           .then(list => {
-            console.log(list);
+            list.sort((eventOne, eventTwo) => new Date(eventTwo.startDate).getDate() - new Date(eventOne.startDate).getDate());
             this.events = list;
           });
       }
-      
+
     }
 
     window.customElements.define(EventsPage.is, EventsPage);

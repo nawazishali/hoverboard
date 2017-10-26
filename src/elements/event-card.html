@@ -1,4 +1,5 @@
 <link rel="import" href="../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../bower_components/polymer/lib/elements/dom-if.html">
 <link rel="import" href="../../bower_components/paper-card/paper-card.html">
 
 <link rel="import" href="../../bower_components/iron-icons/iron-icons.html">
@@ -11,6 +12,8 @@
 
 <link rel="import" href="../../bower_components/paper-styles/color.html">
 <link rel="import" href="../../bower_components/paper-styles/typography.html">
+
+<link rel="import" href="../../bower_components/marked-element/marked-element.html">
 
 <link rel="import" href="./session-element.html">
 <link rel="import" href="./shared-styles.html">
@@ -38,11 +41,17 @@
         color: var(--google-blue-500);
       }
 
-      p{
-        text-align: center;
+      p {
+        text-align: left;
+        color: var(--paper-grey-600);
       }
 
-      .date-time{
+
+      .inline {
+        display: inline;
+      }
+
+      .date-time {
         text-align: center;
       }
 
@@ -80,21 +89,6 @@
         color: var(--paper-grey-500);
       }
       /* CSS Custom */
-
-      .read-more-state:checked~.read-more-wrap .dotspan {
-        display: none;
-      }
-
-      .read-more-state~.read-more-trigger:before {
-        content: 'read more';
-        color: #8e9093
-      }
-
-      .read-more-state:checked~.read-more-trigger:before {
-        content: 'read less';
-        color: #8e9093
-      }
-
       .read-more-trigger {
         cursor: pointer;
         display: block;
@@ -103,28 +97,6 @@
         font-size: .9em;
         line-height: 2;
         text-align: right;
-      }
-
-
-      .read-more-state {
-        display: none;
-      }
-
-      .read-more-target {
-        opacity: 0;
-        max-height: 0;
-        font-size: 0;
-        transition: .25s ease;
-      }
-
-      .read-more-state:checked~.read-more-wrap .read-more-target {
-        opacity: 1;
-        font-size: inherit;
-        max-height: 999em;
-      }
-
-      .dotspan {
-        opacity: 1;
       }
     </style>
 
@@ -138,23 +110,34 @@
         </div>
         <br>
         <div class="date-time">
-        <iron-icon class="cafe-light" icon="device:access-time"></iron-icon>
-        <span class="cafe-light">[[event.startDate]]</span><br>
-        <iron-icon  class="cafe-light" icon="device:access-time"></iron-icon>
-        <span class="cafe-light">[[event.endDate]]</span>
+          <iron-icon class="cafe-light" icon="device:access-time"></iron-icon>
+          <span class="cafe-light">[[event.startDate]]</span><br>
+          <iron-icon class="cafe-light" icon="device:access-time"></iron-icon>
+          <span class="cafe-light">[[event.endDate]]</span>
         </div>
 
-        <input type="checkbox" class="read-more-state" id="post-1" />
-        <p class="cafe-light read-more-wrap">[[shortDesc(event.fullDescription, 100)]]<span class="dotspan">...</span><span class="read-more-target">[[longDesc(event.fullDescription, 100)]]</span></p>
-        <label for="post-1" class="read-more-trigger"></label>
-      </div>
-      <div class="card-actions">
-        <div class="horizontal justified">
-          <paper-button class="cafe-button"><a href="https://www.google.com" target="_blank">Register</a></paper-button>
-          <span>|</span>
-          <paper-button class="cafe-button"><a href="https://www.google.com" target="_blank">Schedule</a></paper-button>
+        <template is="dom-if" if="{{!readMore}}">
+          <marked-element markdown="[[shortDesc(event.fullDescription, 100)]]">
+            <div slot="markdown-html"></div>
+          </marked-element>
+          <span class="read-more-trigger" on-tap="toggleReadMore">Read More</span>
+        </template>
+        <template is="dom-if" if="{{readMore}}">
+          <marked-element markdown="[[event.fullDescription]]">
+            <div slot="markdown-html"></div>
+          </marked-element>
+          <span class="read-more-trigger" on-tap="toggleReadMore">Read Less</span>
+        </template>
+
+        <div class="card-actions">
+          <div class="horizontal justified">
+            <paper-button class="cafe-button"><a href="[[event.register]]" target="_blank">Register</a></paper-button>
+            <span>|</span>
+            <paper-button class="cafe-button">Schedule</paper-button>
+            <!--        Replace above button with this one in order to enable the functionality.           
+          <paper-button class="cafe-button" on-tap="setSchedule">Schedule</paper-button> -->
+          </div>
         </div>
-      </div>
     </paper-card>
 
   </template>
@@ -175,12 +158,20 @@
           },
           longDesc: {
             type: String
+          },
+          schedule: {
+            type: Object,
+            notify: true
+          },
+          readMore: {
+            type: Boolean,
+            value: false
           }
         }
       }
 
       shortDesc(desc, maxChars) {
-        return desc.slice(0, maxChars);
+        return desc.slice(0, maxChars) + "...";
       }
 
       longDesc(desc, maxChars) {
@@ -189,7 +180,13 @@
         return desc.slice(maxChars, length);
       }
 
+      setSchedule() {
+        this.schedule = this.event.schedule;
+      }
 
+      toggleReadMore() {
+        this.readMore = !this.readMore;
+      }
     }
 
     window.customElements.define(EventCard.is, EventCard);

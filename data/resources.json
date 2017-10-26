@@ -1,9 +1,9 @@
 {
   "title": "GDG DevFest Season 2017",
-  "description": "The biggest Google tech conference in Ukraine carefully crafted for you by GDG community! All about Android, Web and Cloud from the world experts",
+  "description": "The biggest Google tech conference in Karachi carefully crafted for you by GDG community! All about Android, Web and Cloud from the world experts",
   "keywords": "event, gdg, gde, devfest, google, programming, android, chrome, polymer, developers, web, cloud, androiddev",
-  "dates": "October 13-14, 2017",
-  "partnershipProposition": "https://bit.ly/dfua17-partners",
+  "dates": "October 18-19, 2017",
+  "partnershipProposition": "https://docs.google.com/forms/d/e/1FAIpQLSeix3SEA5K_lRDhuVjkKocg4NHfIFB7ra58cgVvaQLrfGQImw/viewform",
   "share": "Share",
   "followOur": "Follow our",
   "followUs": "Follow us",
@@ -27,8 +27,8 @@
         },
         {
           "name": "Meet the Team",
-          "url": "https://devfest.gdg.org.ua/team/",
-          "newTab": true
+          "url": "/team",
+          "newTab": false
         }
       ]
     },
@@ -36,23 +36,8 @@
       "title": "Explore Past Events",
       "links": [
         {
-          "name": "DFUA 2013",
-          "url": "http://gdg-devfest-ua.appspot.com/",
-          "newTab": true
-        },
-        {
-          "name": "DFUA 2014",
-          "url": "https://dfua14.firebaseapp.com//",
-          "newTab": true
-        },
-        {
-          "name": "DFUA 2015",
-          "url": "https://dfua15.firebaseapp.com/",
-          "newTab": true
-        },
-        {
-          "name": "DFUA 2016",
-          "url": "https://dfua16.firebaseapp.com/",
+          "name": "GDG DevFest Season 2017 Karachi",
+          "url": "http://gdgkolachi.com/events",
           "newTab": true
         }
       ]
@@ -62,17 +47,17 @@
       "links": [
         {
           "name": "Partner with us",
-          "url": "https://devfest.gdg.org.ua/assets/GDG_DevFest_2016_partnership_proposition.pdf",
+          "url": "https://docs.google.com/forms/d/e/1FAIpQLSeix3SEA5K_lRDhuVjkKocg4NHfIFB7ra58cgVvaQLrfGQImw/viewform",
           "newTab": true
         },
         {
           "name": "Call for Papers",
-          "url": "https://drive.google.com/open?id=10tPuu_7ASM8C70SotqRqIW5Uzos9BzALilMMQPg_JvA",
+          "url": "https://docs.google.com/forms/d/e/1FAIpQLSeix3SEA5K_lRDhuVjkKocg4NHfIFB7ra58cgVvaQLrfGQImw/viewform",
           "newTab": true
         },
         {
           "name": "Volunteer with us",
-          "url": "https://drive.google.com/open?id=10tPuu_7ASM8C70SotqRqIW5Uzos9BzALilMMQPg_JvA",
+          "url": "https://docs.google.com/forms/d/e/1FAIpQLSeix3SEA5K_lRDhuVjkKocg4NHfIFB7ra58cgVvaQLrfGQImw/viewform",
           "newTab": true
         },
         {
@@ -89,12 +74,12 @@
     "title": "What you need to know, before you ask.",
     "callToAction": {
       "featuredSessions": {
-        "description": "GDG DevFest Ukraine brings together the world class experts in Android, Web and Cloud technologies to Lviv for 2 days of sessions, workshops and showcases.",
-        "label": "Explore featured session",
-        "link": "https://www.youtube.com/playlist?list=PLt8lEzcLNl31AouwDkbLbLARlQFwNS2en"
+        "description": "GDG DevFest Karachi brings together the world class experts in Android, Web and Cloud technologies to Karachi for 2 days of sessions, workshops and showcases.",
+        "label": "Explore Events",
+        "link": "/events"
       },
       "howItWas": {
-        "description": "Described by many as 'Google I/O of Ukraine', our team creates DevFest to be the best place for experience sharing in a phenomenal atmosphere.",
+        "description": "Described by many as 'Google I/O of Karachi', our team creates DevFest to be the best place for experience sharing in a phenomenal atmosphere.",
         "label": "See how it was in 2016",
         "youtubeId": "TdpbgRgz6eE"
       }
@@ -106,7 +91,7 @@
       },
       "events": {
         "label": "Events",
-        "number": "2"
+        "number": "1"
       },
       "sessions": {
         "label": "Sessions",
@@ -184,7 +169,7 @@
     "generalError": "Some error has occured. Please, try again later."
   },
   "team": {
-    "description": "Google is known all around the world. Everyone is 'googling', checking on 'maps' and communicating in 'gmail'. For simple users, they are services that just works, but not for us. Developers see much more: APIs, scalability issues, complex technology stacks. And that is what GDG is about.<br><br> [Google Developers Group (GDG) Lviv](http://lviv.gdg.org.ua/) - is open and volunteer geek community who create exciting projects and share experience about Google technologies with a passion.<br><br> Our goal is to organize space to connect the best industry experts with Ukrainian audience to boost development of IT."
+    "description": "Google is known all around the world. Everyone is 'googling', checking on 'maps' and communicating in 'gmail'. For simple users, they are services that just works, but not for us. Developers see much more: APIs, scalability issues, complex technology stacks. And that is what GDG is about.<br><br> [Google Developers Group (GDG) Kolachi](https://www.facebook.com/GDGKolachi) - is open and volunteer geek community who create exciting projects and share experience about Google technologies with a passion.<br><br> Our goal is to organize a space to connect the best industry experts with Pakistani audience to boost development of IT."
   },
   "schedule": {
     "saveSessionsSignedOut": "Sign in to save sessions"
@@ -216,7 +201,7 @@
     "blocks": [
       {
         "title": "Organizer",
-        "description": "<a href='http://lviv.gdg.org.ua' target='_blank'>GDG Lviv</a> with support of 10 GDGs from all around Ukraine is proud organizer of DevFest Ukraine",
+        "description": "<a href='http://gdgkolachi.com' target='_blank'>GDG Kolachi</a> is proud organizer of DevFest Season 2017 Karachi",
         "callToAction": {
           "label": "Open team page",
           "link": "/team"

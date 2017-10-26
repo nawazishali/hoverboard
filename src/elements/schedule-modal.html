@@ -1,0 +1,88 @@
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+
+<link rel="import" href="../../bower_components/paper-dialog/paper-dialog.html">
+<link rel="import" href="../../bower_components/neon-animation/web-animations.html">
+<link rel="import" href="../../bower_components/neon-animation/neon-animations.html">
+
+<link rel="import" href="../../bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../../bower_components/paper-button/paper-button.html">
+
+<link rel="import" href="../elements/schedule-details.html">
+
+<dom-module id="schedule-modal">
+  <template>
+    <style>
+    </style>
+    <paper-dialog id="modal" on-iron-overlay-closed="closed" on-iron-overlay-opened="patchOverlay" entry-animation="scale-up-animation" exit-animation="fade-out-animation" with-backdrop>
+      <schedule-details sessions="[[schedule]]"></schedule-details>
+      <div class="buttons">
+        <paper-button dialog-dismiss>Cancel</paper-button>
+        <paper-button dialog-confirm autofocus>OK</paper-button>
+      </div>
+    </paper-dialog>
+
+  </template>
+  <script>
+    class ScheduleModal extends Polymer.Element {
+      static get is() {
+        return 'schedule-modal';
+      }
+
+      static get properties() {
+        return {
+          schedule: {
+            type: Object,
+            notify: true
+          },
+          modalOpened: {
+            type: Boolean
+          }
+        }
+      }
+
+      static get observers() {
+        return [
+          "changeDetected(schedule)"
+        ]
+      }
+
+      changeDetected(data) {
+        this.modalOpened = true;
+        if(this.modalOpened && data){
+          this.openDialog();
+        }
+      }
+
+      openDialog() {
+        //let body = document.querySelector('body');
+        let modal = this.shadowRoot.querySelector('#modal');
+        //let clonedModal = modal.cloneNode(true);
+        //Polymer.dom(body).appendChild(clonedModal);
+        modal.open();
+      }
+
+      closed(){
+        this.schedule = undefined;
+        this.modalOpened = false;
+      }
+
+      patchOverlay (e) {
+          if(e.target.withBackdrop) {
+            e.target.parentNode.insertBefore(e.target.backdropElement, e.target);
+          }
+        }
+
+    }
+
+    window.customElements.define(ScheduleModal.is, ScheduleModal);
+  </script>
+
+
+
+
+
+
+
+
+
+</dom-module>

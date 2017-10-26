@@ -1,0 +1,72 @@
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../bower_components/paper-tabs/paper-tabs.html">
+
+<dom-module id="schedule-details">
+  <template>
+    <style>
+       :host {
+        padding: 0 !important;
+        --paper-tabs-selection-bar-color: #673AB7;
+      }
+
+       :host h1 {
+        padding: 18px;
+        margin: 0;
+        background: #f7f7f7;
+        color: #424242;
+        text-align: center;
+      }
+
+      paper-tabs {
+        display: flex;
+        align-items: flex-end;
+        height: 80px;
+        background: #f7f7f7;
+        color: #424242;
+        font-family: 'Roboto', 'Noto', sans-serif;
+        -webkit-font-smoothing: antialiased;
+        width: 100%;
+        text-transform: uppercase;
+        margin-bottom: 1px;
+      }
+    </style>
+    <h1>Schedule</h1>
+    <paper-tabs selected="0" noink>
+      <paper-tab>ITEM ONE</paper-tab>
+      <paper-tab>ITEM TWO</paper-tab>
+      <paper-tab>ITEM THREE</paper-tab>
+    </paper-tabs>
+    <div class="details">
+      <p>[[toJson(sessions)]]</p>
+    </div>
+
+  </template>
+
+  <script>
+    class ScheduleDetails extends Polymer.Element {
+      static get is() {
+        return 'schedule-details';
+      }
+
+      static get properties() {
+        return {
+          sessions: {
+            type: Object
+          }
+        }
+      }
+
+      constructor() {
+        super();
+        console.log(this.sessions);
+      }
+
+      toJson(data) {
+        return JSON.stringify(data, null, 4);
+      }
+    }
+
+    window.customElements.define(ScheduleDetails.is, ScheduleDetails);
+  </script>
+
+</dom-module>
