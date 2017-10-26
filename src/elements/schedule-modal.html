@@ -13,7 +13,8 @@
   <template>
     <style>
     </style>
-    <paper-dialog id="modal" on-iron-overlay-closed="closed" on-iron-overlay-opened="patchOverlay" entry-animation="scale-up-animation" exit-animation="fade-out-animation" with-backdrop>
+    <paper-dialog id="modal" on-iron-overlay-closed="closed" entry-animation="scale-up-animation" exit-animation="fade-out-animation"
+      with-backdrop>
       <schedule-details sessions="[[schedule]]"></schedule-details>
       <div class="buttons">
         <paper-button dialog-dismiss>Cancel</paper-button>
@@ -48,30 +49,25 @@
 
       changeDetected(data) {
         this.modalOpened = true;
-        if(this.modalOpened && data){
+        if (this.modalOpened && data) {
           this.openDialog();
         }
       }
 
+      // https://stackoverflow.com/questions/31394305/polymer-1-x-modal-paper-dialog-appears-behind-its-backdrop
       openDialog() {
-        //let body = document.querySelector('body');
-        let modal = this.shadowRoot.querySelector('#modal');
-        //let clonedModal = modal.cloneNode(true);
-        //Polymer.dom(body).appendChild(clonedModal);
-        modal.open();
+        let body = document.querySelector('body');
+        Polymer.dom(body).appendChild(this.$.modal);
+        this.$.modal.open();
+        body.style.overflow = 'hidden';
       }
 
-      closed(){
+      closed() {
+        let body = document.querySelector('body');
         this.schedule = undefined;
         this.modalOpened = false;
+        body.style.overflow = 'scroll';
       }
-
-      patchOverlay (e) {
-          if(e.target.withBackdrop) {
-            e.target.parentNode.insertBefore(e.target.backdropElement, e.target);
-          }
-        }
-
     }
 
     window.customElements.define(ScheduleModal.is, ScheduleModal);
