@@ -1,20 +1,56 @@
 <link rel="import" href="../../bower_components/polymer/polymer-element.html">
 <link rel="import" href="../../bower_components/paper-tabs/paper-tabs.html">
 
+<link rel="import" href="../../bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="../../bower_components/iron-icons/communication-icons.html">
+<link rel="import" href="../../bower_components/iron-icons/device-icons.html">
+
 <dom-module id="schedule-details">
   <template>
     <style>
-       :host {
+      :host {
         padding: 0 !important;
         --paper-tabs-selection-bar-color: #673AB7;
       }
 
-       :host h1 {
+      :host h1 {
         padding: 18px;
         margin: 0;
         background: #f7f7f7;
         color: #424242;
         text-align: center;
+      }
+
+      .session {
+        display: flex;
+        align-items: center;
+        margin: 15px;
+      }
+
+      .location {
+        width: 18px;
+        height: 18px;
+      }
+
+      .timer {
+        width: 40px;
+        height: 40px;
+
+      }
+
+      .timeSlot {
+        margin: 0px 10px;
+        width: 75px;
+        min-width: 75px;
+      }
+
+      paper-card {
+        width: 100%;
+      }
+
+      iron-pages {
+        height: 450px;
+        overflow-y: scroll;
       }
 
       paper-tabs {
@@ -31,15 +67,31 @@
       }
     </style>
     <h1>Schedule</h1>
-    <paper-tabs selected="0" noink>
-      <paper-tab>ITEM ONE</paper-tab>
-      <paper-tab>ITEM TWO</paper-tab>
-      <paper-tab>ITEM THREE</paper-tab>
+    <paper-tabs selected="{{selected}}" noink>
+      <template is="dom-repeat" items="{{sessions}}" as="session">
+        <paper-tab>[[session.dateReadable]]</paper-tab>
+      </template>
     </paper-tabs>
-    <div class="details">
-      <p>[[toJson(sessions)]]</p>
-    </div>
-
+    <iron-pages selected="{{selected}}">
+      <template is="dom-repeat" items="{{sessions}}" as="session">
+        <div>
+          <template is="dom-repeat" items="{{session.time_slots}}" as="timeSlot">
+            <div class="session">
+              <iron-icon class="timer cafe-light" icon="device:access-time"></iron-icon>
+              <div class="timeSlot">[[timeSlot.startTime]] - [[timeSlot.endTime]]</div>
+              <paper-card>
+                <div class="card-content">
+                  <h2>[[timeSlot.session.title]]</h2>
+                  <h3>
+                    <iron-icon class="location" icon="communication:location-on"></iron-icon>[[timeSlot.session.venue]]</h3>
+                  <p class="cafe-light">[[timeSlot.session.description]]</p>
+                </div>
+              </paper-card>
+            </div>
+          </template>
+        </div>
+      </template>
+    </iron-pages>
   </template>
 
   <script>
@@ -58,6 +110,7 @@
 
       constructor() {
         super();
+        this.selected = 0;
         console.log(this.sessions);
       }
 

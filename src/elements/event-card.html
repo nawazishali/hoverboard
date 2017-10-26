@@ -23,7 +23,7 @@
     <style is="custom-style" include="shared-styles flex flex-alignment"></style>
 
     <style>
-       :host {
+      :host {
         display: block;
       }
 
@@ -111,7 +111,8 @@
         <br>
         <div class="date-time">
           <iron-icon class="cafe-light" icon="device:access-time"></iron-icon>
-          <span class="cafe-light">[[event.startDate]]</span><br>
+          <span class="cafe-light">[[event.startDate]]</span>
+          <br>
           <iron-icon class="cafe-light" icon="device:access-time"></iron-icon>
           <span class="cafe-light">[[event.endDate]]</span>
         </div>
@@ -131,11 +132,11 @@
 
         <div class="card-actions">
           <div class="horizontal justified">
-            <paper-button class="cafe-button"><a href="[[event.register]]" target="_blank">Register</a></paper-button>
+            <paper-button class="cafe-button">
+              <a href="[[event.register]]" target="_blank">Register</a>
+            </paper-button>
             <span>|</span>
-            <paper-button class="cafe-button">Schedule</paper-button>
-            <!--        Replace above button with this one in order to enable the functionality.           
-          <paper-button class="cafe-button" on-tap="setSchedule">Schedule</paper-button> -->
+            <paper-button class="cafe-button" on-tap="setSchedule">Schedule</paper-button>
           </div>
         </div>
     </paper-card>
