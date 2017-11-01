@@ -4,6 +4,7 @@
 <link rel="import" href="../../bower_components/iron-pages/iron-pages.html">
 <link rel="import" href="../../bower_components/polymer/lib/elements/dom-repeat.html">
 <link rel="import" href="../elements/schedule-modal.html">
+<link rel="import" href="../elements/event-detail-modal.html">
 
 
 
@@ -18,7 +19,7 @@
     <style is="custom-style" include="shared-styles flex flex-alignment"></style>
 
     <style>
-       :host {
+      :host {
         display: block;
         z-index: 110;
       }
@@ -49,16 +50,17 @@
       }
 
       @media (min-width: 640px) {
-         :host {
+        :host {
           background-color: #fff;
         }
       }
     </style>
     <div class="container flex">
       <template is="dom-repeat" items="{{events}}" as="event">
-        <event-card event="[[event]]" schedule="{{schedule}}"></event-card>
+        <event-card event="[[event]]" schedule="{{schedule}}" eventdetail="{{eventdetail}}"></event-card>
       </template>
     </div>
+    <event-detail-modal eventdetail="{{eventdetail}}"></event-detail-modal>
     <schedule-modal schedule="{{schedule}}"></schedule-modal>
   </template>
 
@@ -75,6 +77,10 @@
             type: Object
           },
           schedule: {
+            type: Object,
+            notify: true
+          },
+          eventdetail: {
             type: Object,
             notify: true
           }
@@ -101,7 +107,6 @@
             this.events = list;
           });
       }
-
     }
 
     window.customElements.define(EventsPage.is, EventsPage);

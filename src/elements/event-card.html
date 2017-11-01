@@ -25,6 +25,7 @@
     <style>
       :host {
         display: block;
+        cursor: pointer;
       }
 
       body {
@@ -100,7 +101,7 @@
       }
     </style>
 
-    <paper-card image="[[event.image]]">
+    <paper-card on-click="displayDetail" image="[[event.image]]">
       <div class="card-content">
         <div class="cafe-header">[[event.name]]
           <div class="cafe-location cafe-light">
@@ -121,14 +122,14 @@
           <marked-element markdown="[[shortDesc(event.fullDescription, 100)]]">
             <div slot="markdown-html"></div>
           </marked-element>
-          <span class="read-more-trigger" on-tap="toggleReadMore">Read More</span>
+          <!-- <span class="read-more-trigger" on-tap="toggleReadMore">Read More</span> -->
         </template>
-        <template is="dom-if" if="{{readMore}}">
+        <!-- <template is="dom-if" if="{{readMore}}">
           <marked-element markdown="[[event.fullDescription]]">
             <div slot="markdown-html"></div>
           </marked-element>
           <span class="read-more-trigger" on-tap="toggleReadMore">Read Less</span>
-        </template>
+        </template> -->
 
         <div class="card-actions">
           <div class="horizontal justified">
@@ -136,7 +137,7 @@
               <a href="[[event.register]]" target="_blank">Register</a>
             </paper-button>
             <span>|</span>
-            <paper-button class="cafe-button" on-tap="setSchedule">Schedule</paper-button>
+            <paper-button class="cafe-button" on-click="setSchedule">Schedule</paper-button>
           </div>
         </div>
     </paper-card>
@@ -167,9 +168,14 @@
           readMore: {
             type: Boolean,
             value: false
+          },
+          eventdetail: {
+            type: Object,
+            notify: true
           }
         }
       }
+
 
       shortDesc(desc, maxChars) {
         return desc.slice(0, maxChars) + "...";
@@ -181,8 +187,14 @@
         return desc.slice(maxChars, length);
       }
 
-      setSchedule() {
+      setSchedule(event) {
+        event.stopPropagation();
         this.schedule = this.event.schedule;
+      }
+
+      displayDetail() {
+
+        this.eventdetail = this.event;
       }
 
       toggleReadMore() {
