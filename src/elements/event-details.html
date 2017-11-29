@@ -1,0 +1,88 @@
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../bower_components/paper-tabs/paper-tabs.html">
+
+<link rel="import" href="../../bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="../../bower_components/iron-icons/communication-icons.html">
+<link rel="import" href="../../bower_components/iron-icons/device-icons.html">
+<link rel="import" href="../../bower_components/marked-element/marked-element.html">
+
+<dom-module id="event-details">
+    <template>
+        <style>
+            :host {
+                padding: 0 !important;
+            }
+
+            :host h1 {
+                padding: 18px;
+                margin: 0;
+                background: #f7f7f7;
+                color: #424242;
+                text-align: center;
+                padding: 50px 0px;
+            }
+
+            .event-container {
+                padding: 20px;
+                height: 400px;
+                overflow: scroll;
+            }
+        </style>
+        <h1>[[details.name]]</h1>
+        <div class="event-container">
+            <h2>Details:</h2>
+            <marked-element markdown="[[details.fullDescription]]">
+                <div slot="markdown-html"></div>
+            </marked-element>
+        </div>
+        <!-- <paper-tabs selected="{{selected}}" noink>
+      <template is="dom-repeat" items="{{sessions}}" as="session">
+        <paper-tab>[[session.dateReadable]]</paper-tab>
+      </template>
+    </paper-tabs> -->
+        <!-- <iron-pages selected="{{selected}}">
+      <template is="dom-repeat" items="{{sessions}}" as="session">
+        <div>
+          <template is="dom-repeat" items="{{session.time_slots}}" as="timeSlot">
+            <div class="session">
+              <iron-icon class="timer cafe-light" icon="device:access-time"></iron-icon>
+              <div class="timeSlot">[[timeSlot.startTime]] - [[timeSlot.endTime]]</div>
+              <paper-card>
+                <div class="card-content">
+                  <h2>[[timeSlot.session.title]]</h2>
+                  <h3>
+                    <iron-icon class="location" icon="communication:location-on"></iron-icon>[[timeSlot.session.venue]]</h3>
+                  <p class="cafe-light">[[timeSlot.session.description]]</p>
+                </div>
+              </paper-card>
+            </div>
+          </template>
+        </div>
+      </template>
+    </iron-pages> -->
+    </template>
+
+    <script>
+        class EventDetails extends Polymer.Element {
+            static get is() {
+                return 'event-details';
+            }
+
+            static get properties() {
+                return {
+                    details: {
+                        type: Object
+                    }
+                }
+            }
+
+            constructor() {
+                super();
+                console.log(this.details);
+            }
+        }
+
+        window.customElements.define(EventDetails.is, EventDetails);
+    </script>
+
+</dom-module>
