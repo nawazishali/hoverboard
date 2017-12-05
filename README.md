@@ -65,11 +65,9 @@ Or you can build in Docker container:
 :book: Read more in [deploy docs](/docs/tutorials/deploy.md).   
 
 
-### Want to Contribute? Follow these simple steps below.
+### Want to Contribute? Follow these Guidelines.
 
-1) Always start your work on `hoverboard-v2` branch which is the default branch.
-2) After you have finished working on the app Push all your changes to your fork.
-3) Submit your Pull Request on `hoverboard-v2` branch on this Repo. 
+Please throughly read these [Guidelines.](https://github.com/GDGKolachi/gdgkolachi.com/blob/hoverboard-v2/CONTRIBUTING.md)
 
 
 
