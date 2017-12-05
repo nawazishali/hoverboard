@@ -65,10 +65,10 @@ Or you can build in Docker container:
 :book: Read more in [deploy docs](/docs/tutorials/deploy.md).   
 
 
-### Contributors :sparkles:
-See [list of contributors](https://github.com/gdg-x/hoverboard/graphs/contributors).
+### Want to Contribute? Follow these Guidelines.
 
-__Maintainer:__ [Oleh Zasadnyy](https://github.com/ozasadnyy) and [Sophie Huts](https://github.com/sophieH29).
+Please throughly read these [Guidelines.](https://github.com/GDGKolachi/gdgkolachi.com/blob/hoverboard-v2/CONTRIBUTING.md)
+
 
 
 ######The GDG App, GDG[x] are not endorsed and/or supported by Google, the corporation.
